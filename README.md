@@ -1,4 +1,4 @@
-# NepPass: Secure Password Vault
+# PlaPass: Secure Password Vault
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Platform](https://img.shields.io/badge/platform-iOS%20%7C%20Android-brightgreen.svg)
@@ -6,7 +6,7 @@
 
 ## Overview
 
-**NepPass** is a secure, offline password manager built with Flutter. It uses industry-standard encryption to ensure your passwords remain private and protected. With zero-knowledge architecture, even we can't access your data - only you hold the key.
+**PlaPass** is a secure, offline password manager built with Flutter. It uses industry-standard encryption to ensure your passwords remain private and protected. With zero-knowledge architecture, even we can't access your data - only you hold the key.
 
 ## Key Security Features
 
@@ -46,7 +46,7 @@ We respect your privacy:
 ## Installation
 
 ### From GitHub Releases
-1. Visit the [Releases](https://github.com/yourusername/neppass/releases) page
+1. Visit the [Releases](https://github.com/yourusername/plapass/releases) page
 2. Download the latest APK for Android or IPA for iOS
 3. Install on your device
 
@@ -64,7 +64,7 @@ We respect your privacy:
 
 ## Contributing
 
-Contributions to improve NepPass are welcome:
+Contributions to improve PlaPass are welcome:
 1. Fork the repository
 2. Create your feature branch (`git checkout -b feature/amazing-feature`)
 3. Commit your changes (`git commit -m 'Add some amazing feature'`)
@@ -83,4 +83,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ---
 
-*NepPass: Your passwords, secured.*
+*PlaPass: Your passwords, secured.*

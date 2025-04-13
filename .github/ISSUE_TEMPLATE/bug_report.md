@@ -1,6 +1,6 @@
 ---
 name: Bug report
-about: Create a report to help us improve NepPass
+about: Create a report to help us improve PlaPass
 title: '[BUG] Brief description of the issue'
 labels: 'bug'
 assignees: ''

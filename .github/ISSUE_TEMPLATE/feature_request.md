@@ -1,6 +1,6 @@
 ---
 name: Feature request
-about: Suggest an idea for NepPass
+about: Suggest an idea for PlaPass
 title: '[FEATURE] Brief description of the feature'
 labels: 'enhancement'
 assignees: ''
@@ -24,10 +24,10 @@ Please describe any security or privacy implications of this feature:
 A clear and concise description of any alternative solutions or features you've considered.
 
 **User Experience Benefits**
-How would this feature improve the user experience for NepPass users?
+How would this feature improve the user experience for PlaPass users?
 
 **Additional Context**
 Add any other context, screenshots, or examples about the feature request here.
 
 ---
-*Note: NepPass prioritizes security and privacy. Features that maintain or enhance our security model will be given priority.*
+*Note: PlaPass prioritizes security and privacy. Features that maintain or enhance our security model will be given priority.*

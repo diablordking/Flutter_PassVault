@@ -122,7 +122,7 @@ class _LoginPageState extends State<LoginPage> {
                         height: size.height * 0.01,
                       ),
                       Text(
-                        'Once you save a password in NepPass. you\'ll '
+                        'Once you save a password in PlaPass. you\'ll '
                         'always have it when you need it. logging in is fast '
                         'and easy.',
                         style: Theme.of(context).textTheme.bodySmall!.copyWith(

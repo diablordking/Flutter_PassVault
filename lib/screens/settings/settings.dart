@@ -128,7 +128,7 @@ class SettingsPage extends StatelessWidget {
       builder: (BuildContext context) {
         return AlertDialog(
           title: const Text('Exit Application'),
-          content: const Text('Are you sure you want to exit NepPass?'),
+          content: const Text('Are you sure you want to exit PlaPass?'),
           actions: <Widget>[
             TextButton(
               onPressed: () {

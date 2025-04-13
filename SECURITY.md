@@ -2,11 +2,11 @@
 
 ## Reporting a Vulnerability
 
-We take the security of NepPass very seriously. We appreciate your efforts to responsibly disclose your findings, and will make every effort to acknowledge your contributions.
+We take the security of PlaPass very seriously. We appreciate your efforts to responsibly disclose your findings, and will make every effort to acknowledge your contributions.
 
 ### How to Report a Security Vulnerability
 
-If you believe you've found a security vulnerability in NepPass, please send an email to **security@neppass.example.com** (replace with actual contact).
+If you believe you've found a security vulnerability in PlaPass, please send an email to **security@plapass.example.com** (replace with actual contact).
 
 Please include the following details in your report:
 
@@ -27,7 +27,7 @@ After you've reported a vulnerability:
 
 ### Encryption Specifications
 
-NepPass uses the following security measures to protect your data:
+PlaPass uses the following security measures to protect your data:
 
 - **AES-256** for encrypting password data
 - **SHA-256** for hashing master password
@@ -39,7 +39,7 @@ NepPass uses the following security measures to protect your data:
 
 ### Security Best Practices for Development
 
-NepPass developers adhere to the following security practices:
+PlaPass developers adhere to the following security practices:
 
 1. No hardcoded secrets or credentials in source code
 2. Regular security code reviews
@@ -51,8 +51,8 @@ NepPass developers adhere to the following security practices:
 
 The following is considered in scope for security reports:
 
-- The NepPass mobile application (iOS and Android)
-- Any dependencies directly utilized by the NepPass application
+- The PlaPass mobile application (iOS and Android)
+- Any dependencies directly utilized by the PlaPass application
 - Build and release infrastructure
 
 ### Safe Harbor
@@ -64,7 +64,7 @@ We support responsible disclosure practices and will not take legal action again
 - Give us reasonable time to respond to your report before making any information public
 - Do not exploit the security vulnerability for your own gain
 
-Thank you for helping keep NepPass and our users safe!
+Thank you for helping keep PlaPass and our users safe!
 
 ---
 

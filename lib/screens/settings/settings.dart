@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'dart:io';
 
 import '../../consts/consts.dart';
 import '../../provider/themeprovider.dart';
@@ -89,6 +90,16 @@ class SettingsPage extends StatelessWidget {
                   ),
                 ),
               ),
+              SizedBox(
+                height: size.height * 0.01,
+              ),
+              _buildListtile(
+                tiletitle: 'Exit Application',
+                iconData: Icons.exit_to_app,
+                onTap: () {
+                  _showExitConfirmationDialog(context);
+                },
+              ),
             ],
           ),
         ),
@@ -107,6 +118,37 @@ class SettingsPage extends StatelessWidget {
       },
       title: Text(tiletitle),
       trailing: Icon(iconData),
+    );
+  }
+
+  // Show confirmation dialog before exiting the application
+  void _showExitConfirmationDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Exit Application'),
+          content: const Text('Are you sure you want to exit NepPass?'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // Close the dialog
+              },
+              child: const Text('Cancel'),
+            ),
+            TextButton(
+              onPressed: () {
+                // Close the app
+                exit(0);
+              },
+              child: const Text(
+                'Exit',
+                style: TextStyle(color: Colors.red),
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 

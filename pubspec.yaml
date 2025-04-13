@@ -46,6 +46,9 @@ dependencies:
   flutter_svg: ^2.0.16
   flutter_native_splash: ^2.4.3
   sliding_clipped_nav_bar: ^3.1.1
+  encrypt: ^5.0.3  # For AES encryption
+  crypto: ^3.0.3   # For password hashing
+  flutter_secure_storage: ^9.0.0  # For secure master password storage
 
 dev_dependencies:
   build_runner: ^2.4.13

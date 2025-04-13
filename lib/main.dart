@@ -12,6 +12,7 @@ import 'provider/themeprovider.dart';
 import 'screens/auth/login.dart';
 import 'screens/onboardingpage.dart';
 import 'services/databaseservice.dart';
+import 'services/encryption_service.dart';
 
 //for future update versions v.2.0.0
 //TODO:: Add Custom Word in Password Generator
@@ -22,8 +23,13 @@ import 'services/databaseservice.dart';
 //TODO:: Authentication option in settings
 //TODO:: implement Backup and restore Password (Required google/apple Authentication)
 
-void main() {
+void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  
+  // Initialize encryption service
+  final encryptionService = EncryptionService();
+  await encryptionService.initialize();
+  
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   runApp(const MyApp());
 }

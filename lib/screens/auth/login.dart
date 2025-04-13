@@ -23,8 +23,9 @@ class _LoginPageState extends State<LoginPage> {
     PatternValidator(r'(?=.*?[#?!@$%^&*-])',
         errorText: 'Passwords must have at least one special character'),
   ]);
-  final passwordMatchValidator =
-      MatchValidator(errorText: 'Passwords do not match');
+  
+  bool _isLoading = false;
+  String _errorMessage = '';
 
   @override
   void dispose() {
@@ -76,8 +77,7 @@ class _LoginPageState extends State<LoginPage> {
                         controller: passwordController,
                         keyboardType: TextInputType.visiblePassword,
                         textInputAction: TextInputAction.done,
-                        validator: (val) => passwordMatchValidator
-                            .validateMatch(val!, provider.masterpassword),
+                        validator: passwordValidator,
                         decoration: InputDecoration(
                           labelText: 'Password',
                           suffixIcon: InkWell(
@@ -92,16 +92,26 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                       ),
+                      if (_errorMessage.isNotEmpty)
+                        Padding(
+                          padding: const EdgeInsets.only(top: 8.0),
+                          child: Text(
+                            _errorMessage,
+                            style: TextStyle(color: Colors.red),
+                          ),
+                        ),
                       SizedBox(
                         height: size.height * 0.05,
                       ),
-                      CustomElevatedButton(
-                        ontap: () {
-                          FocusManager.instance.primaryFocus!.unfocus();
-                          validate(passwordController.text.trim());
-                        },
-                        buttontext: 'Login',
-                      ),
+                      _isLoading
+                          ? const CircularProgressIndicator()
+                          : CustomElevatedButton(
+                              ontap: () {
+                                FocusManager.instance.primaryFocus!.unfocus();
+                                validate(passwordController.text.trim());
+                              },
+                              buttontext: 'Login',
+                            ),
                       SizedBox(
                         height: size.height * 0.1,
                       ),
@@ -133,12 +143,49 @@ class _LoginPageState extends State<LoginPage> {
   void validate(String password) async {
     final FormState form = _loginformKey.currentState!;
     if (form.validate()) {
-      await Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const HomePage(),
-        ),
-      );
+      setState(() {
+        _isLoading = true;
+        _errorMessage = '';
+      });
+
+      try {
+        final authProvider = Provider.of<AuthProvider>(context, listen: false);
+        
+        // Check if this is the first login (no master password set yet)
+        if (authProvider.masterpassword.isEmpty) {
+          // Set the master password for the first time
+          authProvider.savePassword(password: password);
+          await Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const HomePage(),
+            ),
+          );
+        } else {
+          // Verify the password against the stored hash
+          final isValid = await authProvider.verifyMasterPassword(password);
+          if (isValid) {
+            await Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const HomePage(),
+              ),
+            );
+          } else {
+            setState(() {
+              _errorMessage = 'Incorrect master password';
+            });
+          }
+        }
+      } catch (e) {
+        setState(() {
+          _errorMessage = 'Authentication error. Please try again.';
+        });
+      } finally {
+        setState(() {
+          _isLoading = false;
+        });
+      }
     }
   }
 }

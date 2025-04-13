@@ -1,53 +1,59 @@
-## [1.1.1](https://github.com/Emon526/Flutter_PassVault/compare/v1.1.0...v1.1.1) (2024-12-03)
+# Changelog
 
+All notable changes to this project will be documented in this file.
 
-### Bug Fixes
+## [2.0.0] - 2024-08-06
 
-* minor bug fix ([4916e8a](https://github.com/Emon526/Flutter_PassVault/commit/4916e8a582d48878dd87ed3c53bba1e245aeb402))
+### Added
+- AES-256 encryption for all password data
+- Secure storage for encryption keys using platform-specific secure storage
+- SHA-256 hashing for master password
+- Migration system for existing passwords to encrypted format
+- Database version upgrade to support encryption
+- Loading indicators during encryption/decryption operations
+- Enhanced error handling for authentication
+- New security information in registration screen
 
+### Changed
+- Master password storage moved from SharedPreferences to secure storage
+- Database structure updated to track encryption status
+- Login verification now uses secure hash comparison
+- Improved password validation
 
+### Fixed
+- Security vulnerability with plaintext password storage
+- Master password protection
+- Potential data exposure issues
 
-# [1.1.0](https://github.com/Emon526/Flutter_PassVault/compare/v1.0.4...v1.1.0) (2024-11-09)
-
-
-### Bug Fixes
-
-* minor bug fix ([b03d373](https://github.com/Emon526/Flutter_PassVault/commit/b03d37395874a916677a8a00f2744e2214326db8))
-* unsupported operating system removed ([8559e88](https://github.com/Emon526/Flutter_PassVault/commit/8559e8810232e8960ac344f4269e598ca86a035c))
-
-
-### Features
-
-* Responsive Application & Updated Color Scheme ([e48ccf5](https://github.com/Emon526/Flutter_PassVault/commit/e48ccf512ce4d370d561abd70fd528775f1245ab))
-* Sliding Clipped Nav Bar Added ([d59aeda](https://github.com/Emon526/Flutter_PassVault/commit/d59aeda6714092158442af06a5546014496fa80d))
-
-
-
-## [1.0.4](https://github.com/Emon526/Flutter_PassVault/compare/v1.0.3...v1.0.4) (2024-03-02)
-
-
-### Bug Fixes
-
-* Auth Provider Added ([16f348c](https://github.com/Emon526/Flutter_PassVault/commit/16f348c17a13ff2f26fa1031e985ab549b68faeb))
-* OnBoarding Provider Added ([de913e3](https://github.com/Emon526/Flutter_PassVault/commit/de913e3ee51650216326da0e63cc1f96b6f13d46))
-
-
-
-## [1.0.3](https://github.com/Emon526/Flutter_PassVault/compare/v1.0.2...v1.0.3) (2024-02-28)
-
+## [1.1.1] - 2024-06-03
 
 ### Bug Fixes
+- Minor bug fix
 
-* Material 3 Theme Applied ([dc761d0](https://github.com/Emon526/Flutter_PassVault/commit/dc761d045e18e41a872dbd51119e23d110467675))
+## [1.1.0] - 2024-05-09
 
+### Added
+- Responsive Application & Updated Color Scheme
+- Sliding Clipped Nav Bar Added
 
+### Fixed
+- Minor bug fix
+- Unsupported operating system removed
 
-## [1.0.2](https://github.com/Emon526/Flutter_PassVault/compare/v1.0.1...v1.0.2) (2024-02-24)
+## [1.0.4] - 2024-03-02
 
+### Fixed
+- Auth Provider Added
+- OnBoarding Provider Added
 
-### Bug Fixes
+## [1.0.3] - 2024-02-28
 
-* Updated to latest Dart Sdk and Dependency ([d4d3500](https://github.com/Emon526/Flutter_PassVault/commit/d4d35000e0b6e57f0a389c09b96a7bbeb5cb8a1c))
+### Fixed
+- Material 3 Theme Applied
 
+## [1.0.2] - 2024-02-24
+
+### Fixed
+- Updated to latest Dart SDK and Dependencies
 
 

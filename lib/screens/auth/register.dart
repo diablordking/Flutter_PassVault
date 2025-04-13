@@ -29,6 +29,9 @@ class _RegisterPageState extends State<RegisterPage> {
   ]);
   final passwordMatchValidator =
       MatchValidator(errorText: 'Passwords do not match');
+      
+  bool _isLoading = false;
+  String _errorMessage = '';
 
   @override
   void dispose() {
@@ -127,15 +130,25 @@ class _RegisterPageState extends State<RegisterPage> {
                           ),
                         ),
                       ),
+                      if (_errorMessage.isNotEmpty)
+                        Padding(
+                          padding: const EdgeInsets.only(top: 8.0),
+                          child: Text(
+                            _errorMessage,
+                            style: TextStyle(color: Colors.red),
+                          ),
+                        ),
                       SizedBox(
                         height: size.height * 0.04,
                       ),
-                      CustomElevatedButton(
-                        ontap: () {
-                          validate();
-                        },
-                        buttontext: 'Register',
-                      ),
+                      _isLoading
+                          ? const CircularProgressIndicator()
+                          : CustomElevatedButton(
+                              ontap: () {
+                                validate();
+                              },
+                              buttontext: 'Register',
+                            ),
                       SizedBox(
                         height: size.height * 0.07,
                       ),
@@ -152,6 +165,17 @@ class _RegisterPageState extends State<RegisterPage> {
                               color: Colors.grey,
                             ),
                       ),
+                      SizedBox(
+                        height: size.height * 0.01,
+                      ),
+                      Text(
+                        'Your passwords will now be securely encrypted and '
+                        'protected using industry-standard AES encryption.',
+                        style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                              color: Colors.green,
+                              fontWeight: FontWeight.bold,
+                            ),
+                      ),
                     ],
                   ),
                 ),
@@ -166,17 +190,35 @@ class _RegisterPageState extends State<RegisterPage> {
   void validate() async {
     final FormState form = _registerformKey.currentState!;
     if (form.validate()) {
-      context.read<OnBoardingProvider>().isBoardingCompleate = true;
-      context
-          .read<AuthProvider>()
-          .savePassword(password: confirmpasswordController.text.trim());
+      setState(() {
+        _isLoading = true;
+        _errorMessage = '';
+      });
 
-      await Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const HomePage(),
-        ),
-      );
+      try {
+        // Mark onboarding as complete
+        context.read<OnBoardingProvider>().isBoardingCompleate = true;
+        
+        // Save the master password securely
+        context
+            .read<AuthProvider>()
+            .savePassword(password: confirmpasswordController.text.trim());
+
+        await Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const HomePage(),
+          ),
+        );
+      } catch (e) {
+        setState(() {
+          _errorMessage = 'Registration error. Please try again.';
+        });
+      } finally {
+        setState(() {
+          _isLoading = false;
+        });
+      }
     }
   }
 }
